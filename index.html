@@ -376,28 +376,29 @@
                         <!-- 1. Last Entries -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('last-entries')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">1. Last Entries</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Last Entries</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-last-entries" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-last-entries" class="smooth-collapse expanded bg-gray-50/30">
-                                <div id="acc-last-entries-content" class="px-4 pb-3 pt-2 space-y-1 shadow-inner">
-                                    <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider mb-1">Pinned</p>
+                                <div id="acc-last-entries-content" class="px-4 pb-3 pt-2 space-y-2 shadow-inner">
+                                    
+                                    <div class="flex gap-2.5 items-start py-1">
+                                        <div class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 shrink-0"></div>
+                                        <p class="text-[12px] text-gray-800 font-medium">Me generó gran verdad que "all I need is less".</p>
+                                    </div>
+                                    <div class="flex gap-2.5 items-start py-1">
+                                        <div class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 shrink-0"></div>
+                                        <p class="text-[12px] text-gray-800 font-medium">Voy a estar donde quiero; puedo estar feliz. Recordá no preocuparte ni amargarte Juan.</p>
+                                    </div>
+                                    <div class="flex gap-2.5 items-start py-1">
+                                        <div class="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 shrink-0"></div>
+                                        <p class="text-[12px] text-gray-800 font-medium">La inspiración ya va a volver. Dale aire. Si no hay motivo aparente disponible de energía, tranquilo, estás muy bien igual.</p>
+                                    </div>
+
+                                    <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider mb-1 mt-3 pt-2 border-t border-gray-100">Pinned</p>
                                     <div class="flex gap-2.5 items-center py-1">
                                         <i data-lucide="pin" class="w-3.5 h-3.5 text-amber-500 shrink-0"></i>
                                         <p class="text-[12px] text-gray-800 font-medium">Ongoing Process: Trusting the pause</p>
-                                    </div>
-                                    <p class="text-[9px] uppercase font-bold text-gray-400 tracking-wider mb-1 mt-2 pt-1">Recent</p>
-                                    <div class="flex gap-2.5 items-center py-1">
-                                        <span class="text-[10px] font-bold text-gray-400 w-9 shrink-0">Today</span>
-                                        <p class="text-[12px] text-gray-700">Completed Morning Breathwork</p>
-                                    </div>
-                                    <div class="flex gap-2.5 items-center py-1">
-                                        <span class="text-[10px] font-bold text-gray-400 w-9 shrink-0">Yest.</span>
-                                        <p class="text-[12px] text-gray-700">Added new Mantra</p>
-                                    </div>
-                                    <div class="flex gap-2.5 items-center py-1">
-                                        <span class="text-[10px] font-bold text-gray-400 w-9 shrink-0">3d ago</span>
-                                        <p class="text-[12px] text-gray-700">Noted a new recurring pattern</p>
                                     </div>
                                 </div>
                             </div>
@@ -406,7 +407,7 @@
                         <!-- 2. Today -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('today')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">2. Today</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Today</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-today" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-today" class="smooth-collapse expanded bg-gray-50/30">
@@ -432,7 +433,7 @@
                         <!-- 3. Ongoing Processes -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('processes')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">3. Ongoing Processes</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Ongoing Processes</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-processes" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-processes" class="smooth-collapse expanded bg-gray-50/30">
@@ -460,7 +461,7 @@
                         <!-- 4. Mantras -->
                         <div class="border-b border-gray-200 bg-blue-50/20">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer z-10 relative" onclick="toggleAccordion('mantras')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">4. Mantras</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Mantras</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-600 transition-transform duration-300" id="icon-mantras" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-mantras" class="smooth-collapse expanded bg-transparent">
@@ -475,7 +476,7 @@
                         <!-- 5. Recurring Patterns -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('patterns')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">5. Recurring Patterns</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Recurring Patterns</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-patterns" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-patterns" class="smooth-collapse expanded bg-gray-50/30">
@@ -496,7 +497,7 @@
                         <!-- 6. Tasks & Goals -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('goals')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">6. Tasks & Goals</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Tasks & Goals</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-goals" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-goals" class="smooth-collapse expanded bg-gray-50/30">
@@ -526,7 +527,7 @@
                         <!-- 7. Free Time Jar -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('freetime')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">7. Free Time Jar</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Free Time Jar</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-freetime" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-freetime" class="smooth-collapse expanded bg-gray-50/30">
@@ -552,7 +553,7 @@
                         <!-- 8. My Inner Learnings -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('learnings')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">8. My Inner Learnings</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">My Inner Learnings</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-learnings" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-learnings" class="smooth-collapse expanded bg-gray-50/30">
@@ -572,7 +573,7 @@
                         <!-- 9. Self Maps -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('maps')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">9. Self Maps</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Self Maps</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-maps" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-maps" class="smooth-collapse expanded bg-gray-50/30">
@@ -596,7 +597,7 @@
                         <!-- 10. Habit Tracker -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('habit')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">10. Habit Tracker</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Habit Tracker</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-habit" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-habit" class="smooth-collapse expanded bg-gray-50/30">
@@ -638,7 +639,7 @@
                         <!-- 11. Life Dreams -->
                         <div class="border-b border-gray-200">
                             <div class="btn-interactive py-2.5 px-4 flex justify-center items-center cursor-pointer bg-white hover:bg-gray-50 z-10 relative" onclick="toggleAccordion('dreams')">
-                                <span class="text-[13px] font-bold text-gray-900 text-center">11. Life Dreams</span>
+                                <span class="text-[13px] font-bold text-gray-900 text-center">Life Dreams</span>
                                 <i data-lucide="chevron-down" class="absolute right-4 w-4 h-4 text-gray-400 transition-transform duration-300" id="icon-dreams" style="transform: rotate(180deg);"></i>
                             </div>
                             <div id="acc-dreams" class="smooth-collapse expanded bg-gray-50/30">
