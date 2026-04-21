@@ -16,187 +16,134 @@
             --border-color: #e2e8f0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-        }
+        body { background-color: var(--bg-color); color: var(--text-main); }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER --- */
         .header {
             background: white;
             padding: 1rem;
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 100;
+            z-index: 1000;
             border-bottom: 1px solid var(--border-color);
             display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
+            justify-content: center;
+            gap: 10px;
         }
 
         .dropbtn {
             background: #f1f5f9;
             border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border-radius: 12px;
-            z-index: 1;
-            top: 110%;
-        }
-
-        .dropdown:hover .dropdown-content { display: block; }
-
-        /* --- FEED SECTION --- */
+        /* --- FEED --- */
         .feed {
-            margin-top: 70px;
-            margin-bottom: 80px; /* Space for bottom nav */
+            margin-top: 80px;
+            margin-bottom: 100px;
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
+            max-width: 500px; /* Mobile width */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .post-card {
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 1.5rem;
             border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .post-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
+        .post-header { display: flex; justify-content: space-between; margin-bottom: 1rem; }
         .user-info h3 { font-size: 1rem; font-weight: 700; }
-        .user-info p { font-size: 0.8rem; color: var(--text-muted); }
+        .tag { font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; background: #eef2ff; color: var(--primary-color); }
+        .post-content { font-size: 1.05rem; line-height: 1.6; }
 
-        .tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            background: #eef2ff;
-            color: var(--primary-color);
-        }
-
-        .post-content { font-size: 1rem; color: var(--text-main); margin-bottom: 1rem; }
-
-        /* --- BOTTOM NAV (Mobile Default) --- */
-        .bottom-nav {
+        /* --- NAVIGATION --- */
+        .main-nav {
             position: fixed;
             bottom: 0;
             width: 100%;
             background: white;
             display: flex;
             justify-content: space-around;
-            padding: 0.75rem;
+            padding: 0.8rem;
             border-top: 1px solid var(--border-color);
+            z-index: 1000;
         }
 
         .nav-item {
+            text-decoration: none;
+            color: var(--text-muted);
             display: flex;
             flex-direction: column;
             align-items: center;
             font-size: 0.7rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            gap: 0.25rem;
+            gap: 4px;
         }
 
-        .nav-item i { font-size: 1.2rem; }
+        .nav-item i { font-size: 1.3rem; }
         .nav-item.active { color: var(--primary-color); }
 
         /* =============================================
-           DESKTOP STYLES (Media Query)
-           This activates when the screen is wider than 768px
+           DESKTOP FIXES (Screens wider than 768px)
            ============================================= */
         @media (min-width: 768px) {
             .feed {
-                max-width: 650px; /* Professional feed width */
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 700px; /* Wider feed for desktop */
                 margin-top: 100px;
             }
 
             .header {
-                padding: 1rem 20%; /* Wider header spacing */
+                justify-content: flex-start;
+                padding-left: 10%;
             }
 
-            /* Move bottom nav to the left side or keep it centered top */
-            .bottom-nav {
+            /* Move Nav to the TOP instead of Bottom for Desktop */
+            .main-nav {
                 top: 0;
                 bottom: auto;
                 width: auto;
-                background: transparent;
-                border: none;
-                right: 2rem;
+                right: 10%;
+                border-top: none;
                 height: 70px;
-                display: flex;
-                align-items: center;
+                background: transparent;
                 gap: 2rem;
             }
 
-            .nav-item { font-size: 0.9rem; flex-direction: row; gap: 0.5rem; }
-            
-            body {
-                background-color: #f1f5f9; /* Slightly different bg for desktop */
+            .nav-item {
+                flex-direction: row;
+                font-size: 0.9rem;
+                font-weight: 500;
             }
+
+            body { background-color: #f1f5f9; }
         }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <div class="dropdown">
-            <button class="dropbtn">Self App <i class="fas fa-chevron-down"></i></button>
-            <div class="dropdown-content"></div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Communities <i class="fas fa-chevron-down"></i></button>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Mentors <i class="fas fa-chevron-down"></i></button>
-        </div>
+        <button class="dropbtn">Self App <i class="fas fa-chevron-down"></i></button>
+        <button class="dropbtn">Communities <i class="fas fa-chevron-down"></i></button>
+        <button class="dropbtn">Mentors <i class="fas fa-chevron-down"></i></button>
     </header>
 
     <main class="feed">
         <article class="post-card">
             <div class="post-header">
-                <div class="user-info">
-                    <h3>@alma_libre</h3>
-                </div>
+                <div class="user-info"><h3>@alma_libre</h3></div>
                 <span class="tag">PROMPT</span>
             </div>
             <p class="post-content">Hoy solté una expectativa que me pesaba hace meses. Se siente como respirar aire nuevo.</p>
@@ -204,9 +151,7 @@
 
         <article class="post-card">
             <div class="post-header">
-                <div class="user-info">
-                    <h3>@carlos_zen</h3>
-                </div>
+                <div class="user-info"><h3>@carlos_zen</h3></div>
                 <span class="tag">NOTICING</span>
             </div>
             <p class="post-content">¿Alguien más siente que esta luna llena está moviendo emociones muy profundas?</p>
@@ -214,9 +159,7 @@
 
         <article class="post-card">
             <div class="post-header">
-                <div class="user-info">
-                    <h3>@sofia.medita</h3>
-                </div>
+                <div class="user-info"><h3>@sofia.medita</h3></div>
                 <span class="tag">QUESTION</span>
             </div>
             <p class="post-content">Recordatorio: El descanso no es un premio, es una necesidad biológica. Pausa.</p>
@@ -224,17 +167,15 @@
 
         <article class="post-card">
             <div class="post-header">
-                <div class="user-info">
-                    <h3>@ecosdelser</h3>
-                    <p><i class="fas fa-users"></i> Somatic Healing</p>
-                </div>
+                <div class="user-info"><h3>@ecosdelser</h3></div>
                 <span class="tag">GRATITUDE</span>
             </div>
             <p class="post-content">La ansiedad de hoy vino a enseñarme que estoy intentando controlar un futuro que no existe.</p>
         </article>
-    </main>
 
-    <nav class="bottom-nav">
+        </main>
+
+    <nav class="main-nav">
         <a href="#" class="nav-item"><i class="far fa-heart"></i><span>Practice</span></a>
         <a href="#" class="nav-item"><i class="fas fa-users"></i><span>Connect</span></a>
         <a href="#" class="nav-item active"><i class="fas fa-list"></i><span>Feed</span></a>
