@@ -6,7 +6,9 @@
     <title>Self App - Social</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- YOUR ORIGINAL MOBILE CSS (Restored) --- */
         :root {
             --primary-color: #6366f1;
             --bg-color: #f8fafc;
@@ -17,105 +19,57 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
+        body { background-color: var(--bg-color); color: var(--text-main); }
 
-        /* --- HEADER --- */
         .header {
-            background: white;
-            padding: 1rem;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 2000;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            gap: 10px;
+            background: white; padding: 1rem; position: fixed; top: 0; width: 100%;
+            z-index: 1000; border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-around; align-items: center;
         }
 
         .dropbtn {
-            background: #f1f5f9;
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
+            background: #f1f5f9; border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;
+            font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;
         }
 
-        /* --- SECTION MANAGEMENT --- */
-        .content-section {
-            display: none; /* Hide all sections by default */
-            margin-top: 80px;
-            margin-bottom: 100px;
-            padding: 1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeIn 0.3s ease;
-        }
+        .feed { margin-top: 70px; margin-bottom: 80px; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
 
-        .content-section.active {
-            display: block; /* Only show the active section */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- POST CARDS --- */
         .post-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 1.5rem;
+            background: var(--card-bg); border-radius: 16px; padding: 1.5rem;
             border: 1px solid var(--border-color);
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .tag { font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px; background: #eef2ff; color: var(--primary-color); }
+        .tag {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            padding: 0.25rem 0.75rem; border-radius: 4px; background: #eef2ff; color: var(--primary-color);
+        }
 
-        /* --- NAVIGATION --- */
-        .main-nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 0.8rem;
+        .bottom-nav {
+            position: fixed; bottom: 0; width: 100%; background: white;
+            display: flex; justify-content: space-around; padding: 0.75rem;
             border-top: 1px solid var(--border-color);
-            z-index: 2000;
         }
 
         .nav-item {
-            text-decoration: none;
-            color: var(--text-muted);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.7rem;
-            gap: 4px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: 0.2s;
+            display: flex; flex-direction: column; align-items: center;
+            font-size: 0.7rem; color: var(--text-muted); text-decoration: none; gap: 0.25rem;
         }
 
-        .nav-item i { font-size: 1.3rem; }
         .nav-item.active { color: var(--primary-color); }
 
-        /* DESKTOP MEDIA QUERY */
+        /* =============================================
+           THE ONLY NEW PART: THE RESPONSIVE FIX
+           ============================================= */
         @media (min-width: 768px) {
-            .content-section { max-width: 700px; margin-top: 100px; }
-            .header { justify-content: flex-start; padding-left: 10%; }
-            .main-nav {
-                top: 0; bottom: auto; width: auto; right: 10%;
-                border-top: none; height: 70px; background: transparent;
-                gap: 2rem;
+            .feed {
+                max-width: 600px; /* Centers the feed like a real web app */
+                margin-left: auto;
+                margin-right: auto;
             }
-            .nav-item { flex-direction: row; font-size: 0.9rem; }
+            .header {
+                padding: 1rem 20%; /* Spreads the header content */
+            }
             body { background-color: #f1f5f9; }
         }
     </style>
@@ -123,26 +77,18 @@
 <body>
 
     <header class="header">
-        <button class="dropbtn">Self App <i class="fas fa-chevron-down"></i></button>
-        <button class="dropbtn">Communities <i class="fas fa-chevron-down"></i></button>
-        <button class="dropbtn">Mentors <i class="fas fa-chevron-down"></i></button>
+        <div class="dropdown">
+            <button class="dropbtn">Self App <i class="fas fa-chevron-down"></i></button>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Communities <i class="fas fa-chevron-down"></i></button>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Mentors <i class="fas fa-chevron-down"></i></button>
+        </div>
     </header>
 
-    <section id="practice" class="content-section">
-        <h1>Practice</h1>
-        <p style="color: var(--text-muted); margin-top: 1rem;">Here you will find your daily exercises...</p>
-        <div class="post-card" style="margin-top: 2rem;">
-            <h3>Daily Meditation</h3>
-            <p>5 Minutes - Focus on Breath</p>
-        </div>
-    </section>
-
-    <section id="connect" class="content-section">
-        <h1>Connect</h1>
-        <p style="color: var(--text-muted); margin-top: 1rem;">Find your community here.</p>
-    </section>
-
-    <section id="feed" class="content-section active">
+    <main class="feed">
         <article class="post-card">
             <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
                 <h3>@alma_libre</h3>
@@ -158,54 +104,32 @@
             </div>
             <p>¿Alguien más siente que esta luna llena está moviendo emociones muy profundas?</p>
         </article>
-    </section>
 
-    <section id="now" class="content-section">
-        <h1>Now</h1>
-        <p>What's happening right now...</p>
-    </section>
+        <article class="post-card">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h3>@sofia.medita</h3>
+                <span class="tag">QUESTION</span>
+            </div>
+            <p>Recordatorio: El descanso no es un premio, es una necesidad biológica. Pausa.</p>
+        </article>
 
-    <section id="journal" class="content-section">
-        <h1>Journal</h1>
-        <p>Write your thoughts here.</p>
-    </section>
+        <article class="post-card">
+            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                <h3>@ecosdelser</h3>
+                <span class="tag">GRATITUDE</span>
+            </div>
+            <p>La ansiedad de hoy vino a enseñarme que estoy intentando controlar un futuro que no existe.</p>
+        </article>
+        
+        </main>
 
-    <nav class="main-nav">
-        <button class="nav-item" onclick="showSection('practice')">
-            <i class="far fa-heart"></i><span>Practice</span>
-        </button>
-        <button class="nav-item" onclick="showSection('connect')">
-            <i class="fas fa-users"></i><span>Connect</span>
-        </button>
-        <button class="nav-item active" onclick="showSection('feed')">
-            <i class="fas fa-list"></i><span>Feed</span>
-        </button>
-        <button class="nav-item" onclick="showSection('now')">
-            <i class="far fa-sun"></i><span>Now</span>
-        </button>
-        <button class="nav-item" onclick="showSection('journal')">
-            <i class="far fa-user"></i><span>Journal</span>
-        </button>
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item"><i class="far fa-heart"></i><span>Practice</span></a>
+        <a href="#" class="nav-item"><i class="fas fa-users"></i><span>Connect</span></a>
+        <a href="#" class="nav-item active"><i class="fas fa-list"></i><span>Feed</span></a>
+        <a href="#" class="nav-item"><i class="far fa-sun"></i><span>Now</span></a>
+        <a href="#" class="nav-item"><i class="far fa-user"></i><span>Journal</span></a>
     </nav>
-
-    <script>
-        function showSection(sectionId) {
-            // 1. Hide all sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(sec => sec.classList.remove('active'));
-
-            // 2. Show the clicked section
-            const targetSection = document.getElementById(sectionId);
-            targetSection.classList.add('active');
-
-            // 3. Update the active state of the buttons
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => item.classList.remove('active'));
-            
-            // Find the button that was clicked and make it active
-            event.currentTarget.classList.add('active');
-        }
-    </script>
 
 </body>
 </html>
