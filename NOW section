@@ -1,0 +1,453 @@
+# Milestone 1 — Now Section
+## Self App · UX & Implementation Spec · Web App
+
+---
+
+## Layout
+
+```
+- No app header in this section
+- Root container: display flex, flex-direction column, height 100vh
+- Max-width: 390px, horizontally centered in viewport
+- Safe area: padding-top env(safe-area-inset-top), 
+             padding-bottom env(safe-area-inset-bottom)
+- Zone distribution (proportional flex values):
+
+  topGap:              flex 0.07
+  chatbox:             flex 0.33
+  gapChatboxToLabel:   flex 0.03
+  exploreLabel:        flex 0.02
+  gapLabelToCircle:    flex 0.06
+  practiceCircle:      flex 0.33
+  bottomGap:           flex 0.03
+```
+
+All flex values are proportional — implement as `flex: N` within a 
+column flex container. No hardcoded pixel heights on zones.
+
+Typography: use DESIGN.md definitions throughout.
+
+---
+
+## Milestone 1.A — Zone 1 · Chatbox
+
+### Dimensions
+```
+flex: defined in Milestone 1 layout
+width: 88% of screen width, horizontally centered
+```
+
+### Surface
+Rectangular container — match DESIGN.md surface specs (background #F5F5F3, 
+border 1px solid #E8E8E5, border-radius 16px, padding 16px).
+
+### Typography
+Body text — see DESIGN.md.
+
+### Purpose
+- Allows the user to send and receive text messages
+- API connection (claude-sonnet-4-20250514) defined in future milestone
+- Implement now with static/mock responses
+
+### Functional alignment
+- User messages: align right
+- AI messages: align left
+
+### Visual style
+- No avatars, no timestamps, no colored bubbles
+- AI responses may include rich content (graphs, diagrams, illustrations) 
+  rendered inline within the message
+- Vertical spacing between messages: 12px
+
+### Empty state
+Display the following lines centered within the chatbox, 
+each on a separate line:
+
+```
+"Write & understand your thoughts, emotions or sensations."
+"Journal about stories or experiences."
+"Share with community."
+"Explore consciousness and awareness."
+"Or just write down what's up."
+```
+
+### Input area
+- Text input sits at the bottom of the chatbox container
+- Send on Enter (desktop) or send button tap (mobile)
+- Input auto-grows with content (no fixed height)
+
+### Conversation lineament
+Defined in future milestone.
+
+---
+
+## Milestone 1.B — Zone 2 · Explore Your Current State
+
+### Dimensions
+```
+flex: defined in Milestone 1 layout
+width: 88% of screen width, horizontally centered
+```
+
+### Typography
+- Label "Explore your current state": section-label (see DESIGN.md)
+- Chips: chip (see DESIGN.md)
+
+### Label
+- Text: "Explore your current state" with downward chevron on the right
+- No container, no background, no border
+
+### Chips surface
+See DESIGN.md — Chips.
+
+### Layer A
+6 chips in a horizontal wrap:
+
+```
+"I'm feeling..." · "I want · I need" · "I'd like" · 
+"I don't know" · "Something's off" · "Just here"
+```
+
+On chip tap: chip text deposits into chatbox input, 
+Layer A disappears, Layer A.b appears in its place.
+
+### Layer A.b — sub-chips per Layer A chip
+```
+"I'm feeling..."   → foggy · heavy · anxious · flat · absent
+"Something's off"  → uneasy · irritable · tense · restless · hollow
+"I don't know"     → numb · distant · lost · floating · unclear
+"Just here"        → quiet · still · waiting · open · in-between
+"I want · I need"  → opens chatbox directly, cursor ready, no sub-chips
+"I'd like"         → opens chatbox directly, cursor ready, no sub-chips
+```
+
+Multiple chips (Layer A.b or Layer B) can be accumulated in chatbox 
+input, separated by middle dot ( · ).
+
+### Layer B
+- Revealed below Layer A or A.b when "Name what you feel" label 
+  is expanded via chevron
+- 12 chips in a 3-column, 4-row CSS grid
+- Placeholder chips: Anxious · Sad · Numb · Fragile · Restless · 
+  Tender · Heavy · Scattered · Hollow · Raw · Tense · Lost
+
+### Chip interaction with chatbox
+See Milestone 1.2 — Component interaction behavior, Zone 2, Text relation.
+
+### On chat entry sent
+- Zone 2 collapses and hides
+- See Milestone 1.2 — Surface dimension relation
+
+### Chip content personalization
+Defined in future milestone. Requires backoffice and recommendation algorithm.
+
+---
+
+## Milestone 1.C — Zone 3 · Inspire My Reflection
+
+### Dimensions
+```
+flex: defined in Milestone 1 layout
+width: 88% of screen width, horizontally centered
+```
+
+### Typography
+- Title "Inspire my reflection": feature-title (see DESIGN.md)
+- Inspiring prompt: section-label (see DESIGN.md)
+- User text entry: body text (see DESIGN.md)
+
+### Label
+- "Inspire my reflection" with downward chevron on the right
+- No container, no background, no border
+
+### Expanded state — three components in vertical sequence
+
+1. Title: "Inspire my reflection" — remains visible, chevron rotates upward
+
+2. Inspiring prompt:
+   - A rotating sentence or question displayed below the title
+   - Cycling icon (↺) on the right — click replaces prompt from bank
+   - Prompt content: defined in future milestone via INSPIRE_PROMPTS_HOOK
+   - Placeholder prompts for mock: defined in future milestone
+
+3. User text entry:
+   - Appears below the inspiring prompt
+   - A thin horizontal line (1px, color #E8E8E5) marks the entry area
+   - Blinking cursor on the line invites the user to click and type
+   - No placeholder text — line and cursor are the only indicators
+   - Send button to the right of the entry line
+
+### On entry submitted
+See Milestone 1.2 — Zone 1 ↔ Zone 3, Surface and Text relation.
+
+### Collapse behavior
+Chevron on title collapses Zone 3, returns all zones to default state.
+
+---
+
+## Milestone 1.D — Zone 4 · Circle of Actions of Awareness
+
+### Dimensions
+```
+flex: defined in Milestone 1 layout
+width: 88% of screen width, horizontally centered
+```
+
+### Typography
+- Category labels: section-label (see DESIGN.md)
+- Micro-command labels: chip (see DESIGN.md)
+- Session text and instructions: body text (see DESIGN.md)
+- Central circle text: body text, centered (see DESIGN.md)
+
+### Surface
+- Central circle: large circular element, background #F5F5F3, 
+  border: 1px solid #222220, no shadow
+- Category icons arranged radially around the central circle
+- Micro-command icons replace category icons on drag interaction
+
+### Icons (mock — emoji placeholders, final version to be defined)
+```
+1. Breathwork  — 🫁
+2. Stillness   — 🧠
+3. Movement    — 🏃
+4. Nature      — 🍀
+5. Expression  — 🖊️
+6. Water       — 🤲
+7. Devotion    — 🧘
+8. Environment — 🪷 (placeholder — final: custom line illustration)
+```
+
+### Interaction model
+- Navigation language: drag and drop only — no clicking, no menus
+- Drag Presence Circle toward category icon → category icons disappear, 
+  micro-command icons appear in their place
+- Drag toward micro-command → session launches or duration selector appears
+- Nature is the sole exception (see Nature below)
+- Drag implemented via HTML5 drag API or pointer events
+
+### Core interaction modes
+
+**Press and Hold — Presence & Gratitude Timer:**
+```
+- Press and hold Presence Circle for 2.3 seconds
+- 2-minute timer activates
+- Screen blurs — all surrounding elements soften (CSS backdrop-filter)
+- Circular countdown ring appears around the circle (SVG stroke-dashoffset)
+- Center text: "Stay in presence and gratitude in your mind and body"
+- No further interaction during session
+- On completion: blur lifts, screen returns to rest quietly, no prompt
+```
+
+**Drag and Drop — Micro-Action Navigation:**
+Two gestures: drag to category, drag to micro-command.
+Consistent pattern across all categories except Nature.
+
+### Categories and micro-commands
+
+**1. Breathwork**
+```
+Regulate · Activate · Ground · Open
+(Physiological sigh / Kapalabhati burst / Box breathing / 4-7-8)
+No duration selector — self-paced
+Session screen: text only, minimal
+```
+
+**2. Stillness**
+```
+Guided · Unguided · Rest · Body scan
+Duration selector: 2.5 / 6 / 10 / 20 minutes
+Session begins immediately after duration selected
+```
+
+**3. Movement**
+```
+Strength · Jump & open · Shake · Mobility · Stretch
+Duration selector: 2.5 / 6 / 10 / 20 minutes
+Confirmation screen before session begins
+Session screen: sequential text cues timed to duration
+```
+
+**4. Nature**
+```
+No sub-menu — exception to standard interaction pattern
+On drag to Nature: 2.5–3 minute mobilization timer launches immediately
+Timer clickable — user clicks to confirm they are moving
+On confirmation or natural completion: invitation list appears
+Invitation list: non-interactive, low contrast, generous spacing
+Dismissed by single click anywhere
+```
+
+**5. Expression**
+```
+Write · Speak · Draw
+No duration selector
+Each launches 90-second mobilization timer
+Write: instruction "pick up a pen and paper" — no in-app writing field
+Speak: minimal recording interface — waveform and timer only, 
+       nothing stored, recording released at session end
+       (Web Audio API / MediaRecorder)
+Draw: instruction "pick up a pencil or pen" — no in-app canvas
+```
+
+**6. Water**
+```
+Cold · Hot · Wash
+Cold and Hot: 90-second mobilization timer, clickable to confirm arrival
+Wash: no mobilization timer — immediate 2-minute timer on screen
+Session screen: minimal orienting phrase, no enforced duration
+```
+
+**7. Devotion**
+```
+Recite · Chant · Pray · Sit in devotion
+Duration selector: 2.5 / 6 / 10 / 20 minutes
+Tradition-neutral language throughout
+Session screen: minimal, dimmed, soft closing signal
+```
+
+**8. Environment**
+```
+Music · Arrange · Window
+Concept: regulate through immediate physical surroundings
+Content personalization: defined in future milestone
+```
+
+### Flagged for future milestones
+```
+- Session completion signal for self-paced Breathwork
+- Guided meditation audio production
+- Movement cue writing — all modes and durations
+- Nature invitation list typography and visual weight
+- Expression mobilization timer micro-copy
+- Speak recording interface visual design (Web Audio API)
+- Water post-mobilization session screen
+- Devotion copy review — tradition-neutral tone
+- Environment micro-commands and content
+- Icon final design — stroke illustrations replacing emoji placeholders
+```
+
+---
+
+## Milestone 1.2 — Zone & Component Interaction Behavior
+
+### Zone 1 ↔ Zone 2: Chatbox & Explore Your Current State
+
+**Text relation:**
+```
+- Clicking a chip deposits its text into the chatbox input
+- Multiple chips can be accumulated in the input
+- Each additional chip separated by middle dot ( · )
+  example: "nervous · sensitive · discomfort"
+- The AI responds to the combination as a whole
+- User can edit, complete or extend the deposited text freely
+- Double-clicking a chip sends the input directly
+- On first chip click, display micro-hint below input: 
+  "tap to add · double tap to send"
+  Appears once, fades out after 3 seconds, never shown again
+```
+
+**Surface dimension relation:**
+```
+Default state:
+  chatbox: flex 0.33
+  Zone 2: visible
+
+Zone 2 expanded (chips visible):
+  chatbox: flex 0.33 (no resize)
+
+On first message sent:
+  chatbox: flex 0.95
+  Zone 2: hidden
+  (full-screen conversation mode)
+
+On navigation away (tab switch):
+  conversation auto-saved, state preserved on return
+
+On conversation end (journal save or community share):
+  chatbox resets to default
+  Zone 2 returns visible
+  new empty state displayed
+
+Full-screen conversation mode — Zone 2 collapsed:
+  chatbox:           flex 0.80
+  gapChatboxToLabel: flex 0.03
+  exploreLabel:      flex 0.03
+  zone4Peek:         flex 0.07
+  navigationBar:     flex 0.07
+
+Full-screen conversation mode — Zone 2 expanded:
+  chatbox:           flex 0.56
+  gapChatboxToLabel: flex 0.03
+  zone2Expanded:     flex 0.27
+  zone4Peek:         flex 0.07
+  navigationBar:     flex 0.07
+```
+
+### Zone 1 ↔ Zone 3: Chatbox & Inspire My Reflection
+
+**Surface and Text relation:**
+```
+When Zone 3 expands:
+  chatbox reduces to flex 0.13
+  chatbox displays reduced empty state: "Check within yourself"
+  chatbox remains active and clickable — clicking returns to default, 
+  Zone 3 collapses
+
+Below Zone 3 prompt: text entry area with blinking CSS cursor
+  (animated via CSS: border-right blink animation)
+
+On entry confirmed (Enter or send button):
+  chatbox expands to flex 0.95
+  Zone 3 prompt and user response appear as opening conversation lines
+  Zone 2 and Zone 3 hidden
+
+If user closes Zone 3 without responding:
+  all zones return to default state
+
+Zone 4 reduces to thin peek (flex 0.10) with upward chevron 
+while Zone 3 is active
+
+Collapse chevron on Zone 3 returns all zones to default at any moment
+```
+
+### Zone 1 ↔ Zone 4: Chatbox & Circle of Actions of Awareness
+
+**Surface dimension relation:**
+```
+When Zone 4 expands:
+  topGap:            flex 0.04
+  chatbox:           flex 0.12
+  gapChatboxToLabel: flex 0.03
+  exploreLabel:      flex 0.03
+  gapToInspire:      flex 0.04
+  inspireLabel:      flex 0.05
+  gapBelowInspire:   flex 0.04
+  zone4Expanded:     flex 0.58
+  navigationBar:     flex 0.07
+
+Zone 2 and Zone 3: visible as collapsed labels only
+Clicking Zone 1 chatbox collapses Zone 4, returns all zones to default,
+chatbox becomes active
+```
+
+---
+
+## Implementation Notes (Web-specific)
+
+```
+- All flex zone transitions: CSS transition on flex property, 
+  duration 250ms, ease-out
+- Drag interactions: implement via pointer events (pointerdown, 
+  pointermove, pointerup) for cross-device compatibility
+- Press and hold: use pointerdown + setTimeout(2300ms) combination
+- Blur effect: CSS filter: blur(8px) on surrounding elements
+- Countdown ring: SVG circle with stroke-dashoffset animation
+- Recording (Speak): Web Audio API / MediaRecorder API
+- Conversation state persistence: localStorage (session only)
+- No React Native APIs — pure React + CSS
+```
+
+---
+
+*Document status: Ready for Claude Code implementation (M1 core).*
+*API integration, prompt personalization, backoffice content: deferred to future milestones.*
